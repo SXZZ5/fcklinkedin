@@ -2,6 +2,7 @@ package linkedin
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/go-rod/rod/lib/proto"
@@ -29,9 +30,9 @@ func (z *Navigator) Login() {
 	z.Page.MustActivate()
 	//selecting the username/email field.
 	el = z.Page.MustElement(selector_UsernameEmailDalo)
-	el.MustInput("jadaTezNaBano")
+	el.MustInput(os.Getenv("linkedin_username"))
 	el = z.Page.MustElement(selector_PasswordDalo)
-	el.MustInput("jadaTezNaBano")
+	el.MustInput(os.Getenv("linkedin_password"))
 	el = z.Page.MustElement(`#main-content > div.flip-card.flex-grow.min-w-\[300px\].max-w-\[416px\].show-login > div.authwall-sign-in-form > form > div.flex.justify-between.sign-in-form__footer--full-width > button`)
 	el.MustClick()
 }
